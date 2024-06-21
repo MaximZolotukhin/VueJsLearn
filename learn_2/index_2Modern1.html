@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue Basics</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+</head>
+
+<body>
+  <div class="container" id="app2"><!-- выбираем корневой элемент, сообщяем  vue где будет работать наш код через id -->
+    <div class="card">
+      <h1>{{ title }}</h1> <!--Тут мы объявляем переменную из объекта Vue -->
+      <div class="form-control">
+        <input type="text" v-bind:placeholder="placeholderString" v-bind:value="inputValue"
+          v-on:input="inputChangeHandler" v-on:keypress.enter="addNewNote">
+      </div>
+      <h2>Данные из строки ввода: {{ inputValue }}</h2>
+      <button class="btn" v-on:click="addNewNote">Добавить</button>
+      <hr>
+      <ul class="list" v-if="notes.length !== 0">
+        <li class="list-item" v-for="(myNote, index) in notes">{{ myNote }} <button class='btn danger'
+            v-on:click="delNote(index)">Удалить</button></li>
+      </ul>
+      <div v-if="notes.length === 00">Заметок пока нет. Добавьте первую</div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- подключен VueJS через CDN-->
+  <script src="./js/app2Modern1.js"></script>
+</body>
+
+</html>
